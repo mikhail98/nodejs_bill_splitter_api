@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
 const {initSocket} = require('./utils/socket')
-const {MONGODB_URL} = require('./utils/properties')
 
 const userRouter = require('./route/user')
 const authRouter = require('./route/auth')
@@ -13,9 +12,16 @@ const port = process.env.PORT || 80
 
 const serverVersion = "1.0"
 
-const mongoUrl = process.env.MONGODB_URL || MONGODB_URL
+function getMongoUrl() {
+    let mongoUrl = process.env.MONGODB_URL
+    if (!mongoUrl) {
+        const {MONGODB_URL} = require('./utils/properties')
+        mongoUrl = MONGODB_URL
+    }
+    return mongoUrl
+}
 
-mongoose.connect(mongoUrl, {
+mongoose.connect(getMongoUrl(), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
