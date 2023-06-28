@@ -6,22 +6,15 @@ const {initSocket} = require('./utils/socket')
 
 const userRouter = require('./route/user')
 const authRouter = require('./route/auth')
+const propertiesProvider = require('./utils/propertiesProvider')
 
 const app = express()
 const port = process.env.PORT || 80
 
 const serverVersion = "1.0"
 
-function getMongoUrl() {
-    let mongoUrl = process.env.MONGODB_URL
-    if (!mongoUrl) {
-        const {MONGODB_URL} = require('./utils/properties')
-        mongoUrl = MONGODB_URL
-    }
-    return mongoUrl
-}
 
-mongoose.connect(getMongoUrl(), {
+mongoose.connect(propertiesProvider.getMongoUrl(), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
