@@ -6,6 +6,7 @@ const {initSocket} = require('./utils/socket')
 
 const userRouter = require('./route/user')
 const authRouter = require('./route/auth')
+const configRouter = require('./route/config')
 const propertiesProvider = require('./utils/propertiesProvider')
 
 const app = express()
@@ -34,6 +35,7 @@ app.use(function (req, res, next) {
 
 app.use('/auth', authRouter)
 app.use('/users', userRouter)
+app.use('/config', configRouter)
 
 const server = app.listen(port, () => {
     console.log(`Server has been started at port: ${port}`)

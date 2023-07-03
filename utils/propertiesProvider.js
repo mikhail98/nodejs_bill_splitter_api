@@ -16,6 +16,10 @@ function getGoogleWebAuthClientId() {
     return googleWebAuthClientId
 }
 
+function getAvailableCurrencies(){
+    return ['PLN', 'EUR', 'BYN', 'USD', 'CZK', 'HUF', 'UAH']
+}
+
 module.exports = {
-    getMongoUrl, getGoogleWebAuthClientId
+    getMongoUrl, getGoogleWebAuthClientId, getAvailableCurrencies
 }
