@@ -17,7 +17,8 @@ function getGoogleWebAuthClientId() {
 }
 
 function getAvailableCurrencies(){
-    return ['PLN', 'EUR', 'BYN', 'USD', 'CZK', 'HUF', 'UAH']
+    return ['PLN']
+    // return ['PLN', 'EUR', 'BYN', 'USD', 'CZK', 'HUF', 'UAH']
 }
 
 module.exports = {

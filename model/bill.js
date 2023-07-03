@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const propertiesProvider = require('../utils/propertiesProvider')
 
 const billSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         unique: false,
         required: true,
@@ -11,10 +11,10 @@ const billSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    total: {
-        type: Number,
-        unique: false,
-        required: true,
+    billPhotoUrl: {
+        type: String,
+        required: false,
+        unique: false
     },
     currency: {
         type: String,
